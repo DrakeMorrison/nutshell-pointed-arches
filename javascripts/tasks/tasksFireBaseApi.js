@@ -9,15 +9,37 @@ const setConfig = (fbConfig) => {
 //   uid = newUID;
 // };
 
-const saveNewTask = (newTask) => {
+const saveNewTasks = (newTasks) => {
   return new Promise((resolve, reject) => {
     $.ajax({
       method: 'POST',
       url: `${firebaseConfig.databaseURL}/tasks.json`,
-      data: JSON.stringify(newTask),
+      data: JSON.stringify(newTasks),
     })
       .done(() => {
         resolve();
+      })
+      .fail((error) => {
+        reject(error);
+      });
+  });
+};
+
+const getAllTasks = () => {
+  return new Promise((resolve, reject) => {
+    const allTasksArray = [];
+    $.ajax({
+      method: 'GET',
+      url: `${firebaseConfig.databaseURL}/tasks.json`,
+    })
+      .done((allTasksObject) => {
+        if (allTasksObject !== null) {
+          Object.keys(allTasksObject).forEach((fbKey) => {
+            allTasksObject[fbKey].id = fbKey;
+            allTasksArray.push(allTasksObject[fbKey]);
+          });
+        }
+        resolve(allTasksArray);
       })
       .fail((error) => {
         reject(error);
@@ -30,5 +52,6 @@ module.exports = {
   // setUID,
   firebaseConfig,
   // uid,
-  saveNewTask,
+  saveNewTasks,
+  getAllTasks,
 };
