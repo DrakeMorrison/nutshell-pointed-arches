@@ -26,17 +26,85 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-              <li><a class="hide" id='logout-btn'>Logout</a></li>
+
+              <li><a id='logout-btn' class="hide">Logout</a></li>
+
+
+
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
 
-      <div id='authorization'>
-        <div id='register-form'></div>
-        <div id='login-form'></div>
-      </div> <!-- end of authorization-->
-      <div class="hide" id='nutshell'>
+      <div id="authorization">
+        <div id="login-form">
+          <h1 class="text-center">Sign In</h1>
+          <form class="form-horizontal col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
+            <div id="signin-error" class="hide alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              <span id="signin-error-msg"></span>
+              Enter a valid email address
+            </div>
+            <div class="form-group">
+              <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <a href="#" id="register-link">Need to Register?</a>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" id="signin-btn" class="btn btn-default">Sign in</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div id="registration-form" class="hide">
+          <h1 class="text-center">Registration</h1>
+          <form class="form-horizontal col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
+            <div id="register-error" class="hide alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              <span id="register-error-msg"></span>
+              Enter a valid email address
+            </div>
+            <div class="form-group">
+              <label for="registerEmail" class="col-sm-2 control-label">Email</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="registerEmail" placeholder="Email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="registerPassword" class="col-sm-2 control-label">Password</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="registerPassword" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <a href="#" id="signin-link">Go to Login</a>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" id="register-btn" class="btn btn-default">Register</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id='nutshell' class="hide">
         <div class='row'>
           <div class='col-xs-5ths'>Friends</div>
           <div class='col-xs-5ths'>Messages</div>
@@ -52,3 +120,4 @@
   <script src='/dist/app.js'></script>
 </body>
 </html>
+
