@@ -1,3 +1,5 @@
+const {saveUser ,} = require('./firebaseApi');
+
 const authEvents = () => {
 
   $('#signin-btn').click((e) => {
@@ -18,6 +20,9 @@ const authEvents = () => {
     const email = $('#registerEmail').val();
     const pass = $('#registerPassword').val();
     firebase.auth().createUserWithEmailAndPassword(email, pass)
+      .then((result) => {
+        saveUser(result.user); // post user here
+      })
       .catch((error) => {
         // Handle Errors here.
         $('#register-error-msg').tex(error.message);
