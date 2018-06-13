@@ -4,11 +4,11 @@ const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       setUID(user.uid);
-      $('#authScreen').addClass('hide');
+      $('#authorization').addClass('hide');
       $('#logout-btn').removeClass('hide');
       $('#authenticate').addClass('hide');
     } else {
-      $('#authScreen').removeClass('hide');
+      $('#authorization').removeClass('hide');
       $('#logout-btn').addClass('hide');
       $('#authenticate').removeClass('hide');
 
