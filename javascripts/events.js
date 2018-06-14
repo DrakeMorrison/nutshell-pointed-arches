@@ -1,3 +1,5 @@
+const {saveUser ,} = require('./firebaseApi');
+
 const authEvents = () => {
 
   $('#signin-btn').click((e) => {
@@ -5,7 +7,6 @@ const authEvents = () => {
     const email = $('#inputEmail').val();
     const pass = $('#inputPassword').val();
     firebase.auth().signInWithEmailAndPassword(email, pass)
-
       .catch((error) => {
         $('#singin-error-msg').text(error.message);
         $('#signin-error').removeClass('hide');
@@ -18,9 +19,12 @@ const authEvents = () => {
     const email = $('#registerEmail').val();
     const pass = $('#registerPassword').val();
     firebase.auth().createUserWithEmailAndPassword(email, pass)
+      .then((result) => {
+        saveUser(result.user); // post user here
+      })
       .catch((error) => {
         // Handle Errors here.
-        $('#register-error-msg').tex(error.message);
+        $('#register-error-msg').text(error.message);
         $('#register-error').removeClass('hide');
         const errorMessage = error.message;
         console.error(errorMessage);
