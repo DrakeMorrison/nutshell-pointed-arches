@@ -14,6 +14,14 @@ function addFriendEvent () {
   });
 }
 
+function friendRequestEvent () {
+  $('.friend-request-btn').click(function (e) {
+    // show alert for UX
+    // make new Friend Object with current user as uid
+  });
+}
+
 module.exports = {
   addFriendEvent,
+  friendRequestEvent,
 };
