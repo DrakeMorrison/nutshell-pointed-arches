@@ -1,0 +1,22 @@
+{
+	"events": {
+		"event1": {
+			"userUid": "5ykBb0xyadPZLgH4EPO4i88HIql2",
+      "event": "Bonfire at the beach",
+      "startDate": 1528763298535,
+      "location": "Ocean Beach"
+		},
+		"event2": {
+			"userUid": "5ykBb0xyadPZLgH4EPO4i88HIql2",
+      "event": "Hiking at Sunset",
+      "startDate": 1528763298535,
+      "location": "Mountains"
+		},
+		"event3": {
+			"userUid": "5ykBb0xyadPZLgH4EPO4i88HIql2",
+      "event": "Drinking at Happy Hour",
+      "startDate": 1528763298535,
+      "location": "Rooftop Bar"
+		}
+  }
+}
