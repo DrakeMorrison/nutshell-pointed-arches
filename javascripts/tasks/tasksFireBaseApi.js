@@ -16,8 +16,8 @@ const saveNewTasks = (newTasks) => {
       url: `${firebaseConfig.databaseURL}/tasks.json`,
       data: JSON.stringify(newTasks),
     })
-      .done(() => {
-        resolve();
+      .done((uniqueKey) => {
+        resolve(uniqueKey);
       })
       .fail((error) => {
         reject(error);
