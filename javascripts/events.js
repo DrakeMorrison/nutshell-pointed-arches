@@ -7,7 +7,6 @@ const authEvents = () => {
     const email = $('#inputEmail').val();
     const pass = $('#inputPassword').val();
     firebase.auth().signInWithEmailAndPassword(email, pass)
-
       .catch((error) => {
         $('#singin-error-msg').text(error.message);
         $('#signin-error').removeClass('hide');
@@ -25,7 +24,7 @@ const authEvents = () => {
       })
       .catch((error) => {
         // Handle Errors here.
-        $('#register-error-msg').tex(error.message);
+        $('#register-error-msg').text(error.message);
         $('#register-error').removeClass('hide');
         const errorMessage = error.message;
         console.error(errorMessage);

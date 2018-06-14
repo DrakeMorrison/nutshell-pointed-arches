@@ -9,6 +9,10 @@ const setUID = (newUID) => {
   uid = newUID;
 };
 
+const getConfig = () => firebaseConfig;
+
+const getUID = () => uid;
+
 const saveUser = (input) => {
   const newUser = {
     'uid': input.uid,
@@ -32,7 +36,7 @@ const saveUser = (input) => {
 module.exports = {
   setConfig,
   setUID,
-  firebaseConfig,
-  uid,
   saveUser,
+  getConfig,
+  getUID,
 };
