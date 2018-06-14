@@ -10,7 +10,7 @@ function addFriendEvent () {
   $('#add-friend-btn').click(function (e) {
     getFriends().then(function (results) {
       printFriends(results, getUID());
-    }).catch(console.error.bind(console)); // show current friend list
+    }).catch(console.error.bind(console));
   });
 }
 

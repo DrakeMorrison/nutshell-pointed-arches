@@ -1,3 +1,5 @@
+// Author: Drake Morrison
+// Purpose: manage the DOM with functions
 'use strict';
 
 function printFriends (input, uid) {

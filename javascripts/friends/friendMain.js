@@ -5,7 +5,7 @@
 const {addFriendEvent,} = require('./friendEvents.js');
 
 function startFriends () {
-  addFriendEvent(); // event listener for adding a new friend
+  addFriendEvent();
 }
 
 module.exports = {

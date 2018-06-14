@@ -1,5 +1,5 @@
 // Author: Drake Morrison
-// Purpose:
+// Purpose: Handle CRUD with the Firebase API
 'use strict';
 
 const {getConfig,} = require('./../firebaseApi.js');
