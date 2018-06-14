@@ -1,0 +1,20 @@
+{
+  "users": {
+    "userExample1": "userExample"
+  },
+  "messages": {
+    "msgExample": "msgExample"
+  },
+  "articles": {
+    "articleExample": "articleExample"
+  },
+  "friends": {
+    "friendExample": "friendExample"
+  },
+  "tasks": {
+    "taskExample": "taskExample"
+  },
+  "events": {
+    "eventExample": "eventExample"
+  }
+}

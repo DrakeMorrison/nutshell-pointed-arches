@@ -8,6 +8,7 @@ const checkLoginStatus = () => {
       $('#logout-btn').removeClass('hide');
       $('#authenticate').addClass('hide');
       $('#nutshell').removeClass('hide');
+      $('#username').html(user.email);
     } else {
       $('#authorization').removeClass('hide');
       $('#logout-btn').addClass('hide');
