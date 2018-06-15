@@ -1,5 +1,6 @@
-// const firebaseApi = require('./article-firebaseApi');
+const articleFirebaseApi = require('./article-firebaseApi');
 const {saveArticle,} = require('./../firebaseApi.js');
+const {domStringArticles,} = require('./article-dom.js');
 const modalBtn = () => {
   $('#newArticle-btn').click((e) => {
     // e.preventDefault();
@@ -18,6 +19,8 @@ const saveArticleEvent = () => {
     saveArticle(ArticleToAdd)
       .then(() => {
         $('.article-title, .article-synopsis, .article-url').val('');
+        $('.article-form').addClass('hide');
+        getAllArticlesEvent();
       })
       .catch((error) => {
         console.error('error in saving movie', error);
@@ -25,7 +28,32 @@ const saveArticleEvent = () => {
   });
 };
 
+const getAllArticlesEvent = () => {
+  articleFirebaseApi.getAllSavedArticles()
+    .then((articlesArray) => {
+      domStringArticles(articlesArray, 'savedArticlesDiv');
+    })
+    .catch((error) => {
+      console.error('error in get all articles event', error);
+    });
+};
+
+const deleteArticleFromFirebase = () => {
+  $(document).on('click', '.deleteArticleFromCollectionEvent', (e) => {
+    const movieToDeleteId = $(e.target).closest('.articleCard').data('firebaseId');
+    articleFirebaseApi.deleteArticleFromDatabase(movieToDeleteId)
+      .then(() => {
+        getAllArticlesEvent();
+      })
+      .catch((error) => {
+        console.error('error from delete article', error);
+      });
+  });
+};
+
 module.exports = {
   modalBtn,
   saveArticleEvent,
+  getAllArticlesEvent,
+  deleteArticleFromFirebase,
 };
