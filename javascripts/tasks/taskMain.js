@@ -1,3 +1,9 @@
-const events = require('./events');
+const { initializer, } = require('./taskEvents');
 
-events.initializer();
+function exposeTask () {
+  initializer();
+};
+
+module.exports = {
+  exposeTask,
+};

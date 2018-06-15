@@ -1,19 +1,21 @@
+const {getConfig,} = require('./../firebaseApi.js');
+
 let firebaseConfig = {};
-// let uid = '';
+let uid = '';
 
 const setConfig = (fbConfig) => {
   firebaseConfig = fbConfig;
 };
 
-// const setUID = (newUID) => {
-//   uid = newUID;
-// };
+const setUID = (newUID) => {
+  uid = newUID;
+};
 
 const saveNewTasks = (newTasks) => {
   return new Promise((resolve, reject) => {
     $.ajax({
       method: 'POST',
-      url: `${firebaseConfig.databaseURL}/tasks.json`,
+      url: `${getConfig().databaseURL}/tasks.json`,
       data: JSON.stringify(newTasks),
     })
       .done((uniqueKey) => {
@@ -30,7 +32,7 @@ const getAllTasks = () => {
     const allTasksArray = [];
     $.ajax({
       method: 'GET',
-      url: `${firebaseConfig.databaseURL}/tasks.json`,
+      url: `${getConfig().databaseURL}/tasks.json`,
     })
       .done((allTasksObject) => {
         if (allTasksObject !== null) {
@@ -49,9 +51,9 @@ const getAllTasks = () => {
 
 module.exports = {
   setConfig,
-  // setUID,
+  setUID,
   firebaseConfig,
-  // uid,
+  uid,
   saveNewTasks,
   getAllTasks,
 };

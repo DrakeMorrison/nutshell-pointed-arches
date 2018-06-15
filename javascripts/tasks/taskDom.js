@@ -1,7 +1,5 @@
 const domString = (taskArray, whereToPrint) => {
   let taskString = '';
-  taskString += `<button class="newTask">New Task</button>`;
-  taskString += `<textarea class="form-control" rows="3"></textarea>`;
   taskArray.forEach((tasks) => {
     taskString += `<div class="row">`;
     taskString += `<div class="col-sm-12">`;
