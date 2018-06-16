@@ -33,10 +33,28 @@ const saveUser = (input) => {
   });
 };
 
+const saveArticle = (newArticle) => {
+  newArticle.uid = uid;
+  return new Promise ((resolve, reject) => {
+    $.ajax({
+      method: 'POST',
+      url: `${firebaseConfig.databaseURL}/articles.json`,
+      data: JSON.stringify(newArticle),
+    })
+      .done((uniqueKey) => {
+        resolve(uniqueKey);
+      })
+      .fail((error) => {
+        reject(error);
+      });
+  });
+};
+
 module.exports = {
   setConfig,
   setUID,
   saveUser,
   getConfig,
   getUID,
+  saveArticle,
 };
