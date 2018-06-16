@@ -3,12 +3,12 @@ const domStrang = (eventsArray) => {
     let strang = '';
     strang +=  `<div class="col-sm-12">`;
     strang +=   `<div class="thumbnail">`;
-    strang +=     `<h3>${event.event}</h3>`;
-    strang +=     `<h4>${event.startDate}</h3>`;
-    strang +=     `<p>${event.location}</p>`;
-    strang +=     `<p><a href="#" class="btn btn-primary" role="button">Save</a> <a href="#" class="btn btn-warning" role="button">Edit</a></p>`;
+    strang +=     `<h3>${event.eventName}</h3>`;
+    strang +=     `<h4>${event.eventLocation}</h4>`;
+    strang +=     `<h4>${event.eventDate}</h3>`;
+    strang +=     `<p><a href="#" id="event-save-button" class="btn btn-primary" role="button">Save</a> <a href="#" id="event-edit-button" class="btn btn-warning" role="button">Edit</a></p>`;
     strang +=    `</div>`;
-    printToDom('#events-holder', strang);
+    printToDom('#events-card-holder', strang);
   });
 };
 

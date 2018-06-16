@@ -1,9 +1,12 @@
 const {authEvents,} = require('./events');
 const { retrieveKeys, } = require('./apiKeys');
+const {startEvents, } = require('./events/eventsSquared');
 
 const initializer = () => {
-  retrieveKeys();
-  authEvents();
+  retrieveKeys().then(() => {
+    authEvents();
+    startEvents();
+  });
 };
 
 initializer();

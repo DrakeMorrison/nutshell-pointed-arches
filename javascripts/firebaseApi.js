@@ -9,9 +9,17 @@ const setUID = (newUID) => {
   uid = newUID;
 };
 
+const getConfig = () => {
+  return firebaseConfig;
+};
+
+const getUID = () => {
+  return uid;
+};
+
 module.exports = {
   setConfig,
   setUID,
-  firebaseConfig,
-  uid,
+  getUID ,
+  getConfig,
 };

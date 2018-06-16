@@ -14,15 +14,19 @@ const apiKeys = () => {
 };
 
 const retrieveKeys = () => {
-  apiKeys()
-    .then((results) => {
-      firebaseApi.setConfig(results.firebase);
-      firebase.initializeApp(results.firebase);
-      checkLoginStatus();
-    })
-    .catch((err) => {
-      console.error('no keys:', err);
-    });
+  return new Promise ((resolve, reject) => {
+    apiKeys()
+      .then((results) => {
+        firebaseApi.setConfig(results.firebase);
+        firebase.initializeApp(results.firebase);
+        checkLoginStatus();
+        resolve();
+      })
+      .catch((err) => {
+        console.error('no keys:', err);
+        reject(err);
+      });
+  });
 };
 
 module.exports = {
