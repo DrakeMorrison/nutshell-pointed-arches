@@ -1,12 +1,9 @@
 const {authEvents,} = require('./events');
-const { retrieveKeys, } = require('./apiKeys');
-const {startEvents, } = require('./events/eventsSquared');
+const {retrieveKeys, } = require('./apiKeys');
 
-const initializer = () => {
-  retrieveKeys().then(() => {
-    authEvents();
-    startEvents();
-  });
+const startApp = () => {
+  retrieveKeys();
+  authEvents();
 };
 
-initializer();
+startApp();
