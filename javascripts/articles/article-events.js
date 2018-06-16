@@ -36,7 +36,7 @@ const megaSmash = (articleArray, friendsArray) => {
     .then((results) => {
       results[0].forEach((article) => {
         results[1].forEach((friend) => {
-          if ((getUID() === friend.friendUid && friend.isAccepted === true) && friend.userUid === article.uid) {
+          if ((((getUID() === friend.friendUid) && (friend.userUid === article.uid)) && friend.isAccepted === true) || (((getUID() === friend.userUid) && (friend.friendUid === article.uid)) && friend.isAccepted === true)) {
             if (!articles.includes(article)) {
               articles.push(article);
             }
