@@ -25,7 +25,7 @@ function friendRequestEvent () {
       'isAccepted': false,
       'isPending': true,
     };
-    sendFriendRequest(newFriend).then().catch(console.error.bind(console));
+    sendFriendRequest(newFriend).then(alert('Request Sent!')).catch(console.error.bind(console));
   });
 }
 
