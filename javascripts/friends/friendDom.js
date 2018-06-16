@@ -27,18 +27,22 @@ function appendToDom (str, id) {
 
 function showFriends (array) {
   let str = '';
+  printToDom(str, '#friends');
   array.forEach(function (friend) {
-    if (friend.isPending === true) {
-      findEmailByUID(friend.userUid).then(function (matchingFriend) {
-        str += `<div class="thumbnail">`;
-        str += `<div class="caption">`;
+    findEmailByUID(friend.userUid).then(function (matchingFriend) {
+      str += `<div class="thumbnail">`;
+      str += `<div class="caption">`;
+      if (friend.isPending === true) {
         str += `<h6>${matchingFriend.email} wants to be your friend!</h6>`;
-        str += `<p><a class="btn btn-success" role="button">Accept</a> <a class="btn btn-danger" role="button">Reject</a></p>`;
-        str += `</div>`;
-        str += `</div>`;
-        appendToDom(str, '#friends');
-      }).catch(console.error.bind(console));
-    }
+        str += `<p><a class="btn btn-success accept-friend" data-friend="${friend}" role="button">Accept</a> <a class="btn btn-danger reject-friend" data-id="${friend.id}" role="button">Reject</a></p>`;
+      } else if (friend.isAccepted === true) {
+        str += `<h5>${matchingFriend.email}</h5>`;
+        str += `<p><a class='btn btn-danger'>UnFriend</a></p>`;
+      }
+      str += `</div>`;
+      str += `</div>`;
+      appendToDom(str, '#friends');
+    }).catch(console.error.bind(console));
   });
 }
 

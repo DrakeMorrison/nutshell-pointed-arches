@@ -35,8 +35,18 @@ function refreshFriends () {
   }).catch(console.error.bind(console));
 }
 
+function acceptFriend () {
+  $(document).on('click', '.accept-friend', function (e) {
+    // send new friend object to friends and update old friend object
+  });
+}
+
+function rejectFriend () {}
+
 module.exports = {
   addFriendEvent,
   friendRequestEvent,
   refreshFriends,
+  acceptFriend,
+  rejectFriend,
 };
