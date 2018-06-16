@@ -4,7 +4,7 @@
 
 const {getConfig,} = require('./../firebaseApi.js');
 
-function getFriends () {
+function getUsers () {
   const allFriends = [];
   return new Promise(function (resolve, reject) {
     $.ajax({
@@ -26,6 +26,23 @@ function getFriends () {
   });
 }
 
+function sendFriendRequest (newFriend) {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      method: 'POST',
+      url: `${getConfig().databaseURL}/friends.json`,
+      data: JSON.stringify(newFriend),
+    })
+      .done(function (uniqueKey) {
+        resolve(uniqueKey);
+      })
+      .fail(function (error) {
+        reject(error);
+      });
+  });
+}
+
 module.exports = {
-  getFriends,
+  getUsers,
+  sendFriendRequest,
 };
