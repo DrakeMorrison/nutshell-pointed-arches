@@ -32,8 +32,8 @@ function showFriends (array) {
       findEmailByUID(friend.userUid).then(function (matchingFriend) {
         str += `<div class="thumbnail">`;
         str += `<div class="caption">`;
-        str += `<h6 id='friend-request'>${matchingFriend.email} wants to be your friend!</h6>`;
-        str += `<p><a href="#" class="btn btn-success" role="button">Accept</a> <a href="#" class="btn btn-danger" role="button">Reject</a></p>`;
+        str += `<h6>${matchingFriend.email} wants to be your friend!</h6>`;
+        str += `<p><a class="btn btn-success" role="button">Accept</a> <a class="btn btn-danger" role="button">Reject</a></p>`;
         str += `</div>`;
         str += `</div>`;
         appendToDom(str, '#friends');
