@@ -3,9 +3,7 @@ const taskDom = require('./taskDom');
 
 const newTask = () => {
   $(document).on('click', '.new', (e) => {
-    // alert('newTask');
     $('#taskForm').removeClass('hide');
-    // saveNewTasks(writeTask);
   });
 };
 
@@ -14,6 +12,7 @@ const saveTaskEvent = () => {
     const eventCardToAdd = $(e.target).closest('.tasksBox');
     const eventToAdd = {
       task: eventCardToAdd.find('.task').text(),
+      isCompleted: true,
     };
     saveNewTasks(eventToAdd)
       .then(() => {
@@ -28,7 +27,10 @@ const saveTaskEvent = () => {
 const getAllTaskEvent = () => {
   getAllTasks()
     .then((allTasksArray) => {
-      taskDom.domString(allTasksArray, 'taskContainer');
+      taskDom.domString('taskContainer', allTasksArray);
+    })
+    .catch((error) => {
+      console.error(error.message);
     });
 };
 

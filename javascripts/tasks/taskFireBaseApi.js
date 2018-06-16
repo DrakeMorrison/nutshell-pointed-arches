@@ -1,17 +1,18 @@
 const {getConfig,} = require('./../firebaseApi.js');
 
 let firebaseConfig = {};
-let uid = '';
+// let uid = '';
 
 const setConfig = (fbConfig) => {
   firebaseConfig = fbConfig;
 };
 
-const setUID = (newUID) => {
-  uid = newUID;
-};
+// const setUID = (newUID) => {
+//   uid = newUID;
+// };
 
 const saveNewTasks = (newTasks) => {
+  // newTasks.uid = uid;
   return new Promise((resolve, reject) => {
     $.ajax({
       method: 'POST',
@@ -51,9 +52,9 @@ const getAllTasks = () => {
 
 module.exports = {
   setConfig,
-  setUID,
+  // setUID,
   firebaseConfig,
-  uid,
+  // uid,
   saveNewTasks,
   getAllTasks,
 };
