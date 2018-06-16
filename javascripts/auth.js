@@ -1,12 +1,5 @@
 const { setUID, } = require('./firebaseApi');
 const {getAllArticlesEvent,} = require('./articles/article-events.js');
-// let uid = '';
-// const uidArticle = (newUID) => {
-//   return newUID;
-// };
-// const getUIDArticle = () => {
-//   return uid;
-// };
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
