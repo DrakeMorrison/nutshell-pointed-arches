@@ -39,7 +39,24 @@ const getEventsData = () => {
   });
 };
 
+const deleteEvent = (eventId) => {
+  return new Promise ((resolve, reject) => {
+    const config = mainFirebaseApi.getConfig();
+    $.ajax({
+      method: 'DELETE',
+      url: `${config.databaseURL}/events/${eventId}.json`,
+    })
+      .done(() => {
+        resolve();
+      })
+      .fail((error) => {
+        reject(error);
+      });
+  });
+};
+
 module.exports = {
+  deleteEvent,
   getEventsData,
   createEvent,
 };

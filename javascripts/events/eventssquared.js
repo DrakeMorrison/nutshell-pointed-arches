@@ -40,7 +40,21 @@ const clickEvents = () => {
   });
 };
 
+const deleteEventFromFirebase = () => {
+  $(document).on('click', '#event-delete-button', (e) => {
+    const deletedEventId = $(e.target).closest('.event-card').data('firebase-event-id');
+    eventsFirebaseApi.deleteEvent(deletedEventId)
+      .then(() => {
+        getEventsEvent();
+      })
+      .catch((error) => {
+        console.error('deleteEventFromFirebase error - check eventsSquared.js', error);
+      });
+  });
+};
+
 const startEvents = () => {
+  deleteEventFromFirebase();
   getEventsEvent();
   clickEvents();
 };
