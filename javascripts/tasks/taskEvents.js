@@ -1,4 +1,4 @@
-const { saveNewTasks, getAllTasks, } = require('./taskFirebaseApi');
+const { saveNewTasks, getAllTasks, deleteTaskFromDb, } = require('./taskFirebaseApi');
 const taskDom = require('./taskDom');
 
 const newTask = () => {
@@ -37,15 +37,14 @@ const getAllTaskEvent = () => {
 
 const deleteTaskFromFirebase = () => {
   $(document).on('click', '.deleteTask', (e) => {
-    $(e.target).closest('.taskHolder').data('firebaseId');
-    // const deleteTaskId =
-    // deleteTaskFromDb(deleteTaskId)
-    // .then(() => {
-    //   getAllTaskEvent();
-    // })
-    // .catch((error) => {
-    //   console.error(error.message);
-    // });
+    const deleteTaskId = $(e.target).closest('.tasksBox').data('firebaseId');
+    deleteTaskFromDb(deleteTaskId)
+      .then(() => {
+        getAllTaskEvent();
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
   });
 };
 

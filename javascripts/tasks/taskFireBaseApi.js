@@ -40,22 +40,23 @@ const getAllTasks = () => {
   });
 };
 
-// const deleteTaskFromDb = (writeTaskId) => {
-//   return new Promise((resolve, reject) => {
-//     $.ajax({
-//       method: 'DELETE',
-//       url: `${getConfig().databaseURL}/tasks/${writeTaskId}.json`,
-//     })
-//       .done(() => {
-//         resolve();
-//       })
-//       .fail((error) => {
-//         reject(error);
-//       });
-//   });
-// };
+const deleteTaskFromDb = (writeTaskId) => {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      method: 'DELETE',
+      url: `${getConfig().databaseURL}/tasks/${writeTaskId}.json`,
+    })
+      .done(() => {
+        resolve();
+      })
+      .fail((error) => {
+        reject(error);
+      });
+  });
+};
 
 module.exports = {
   saveNewTasks,
   getAllTasks,
+  deleteTaskFromDb,
 };
