@@ -1,5 +1,6 @@
 const { setUID, } = require('./firebaseApi');
 const {getAllArticlesEvent,} = require('./articles/article-events.js');
+const {refreshFriends,} = require('./friends/friendEvents.js');
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -13,6 +14,7 @@ const checkLoginStatus = () => {
       $('#username').html(user.email);
       $('#username').removeClass('hide');
       getAllArticlesEvent();
+      refreshFriends();
     } else {
       $('#authorization').removeClass('hide');
       $('#logout-btn').addClass('hide');

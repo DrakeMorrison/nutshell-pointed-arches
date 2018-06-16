@@ -2,6 +2,8 @@
 // Purpose: manage the DOM with functions
 'use strict';
 
+const {findEmailByUID,} = require('./friendFirebaseAPI.js');
+
 function printFriends (input, uid) {
   let str = '';
   $(function () {
@@ -19,6 +21,28 @@ function printToDom (str, id) {
   $(id).html(str);
 }
 
+function appendToDom (str, id) {
+  $(id).append(str);
+}
+
+function showFriends (array) {
+  let str = '';
+  array.forEach(function (friend) {
+    if (friend.isPending === true) {
+      findEmailByUID(friend.userUid).then(function (matchingFriend) {
+        str += `<div class="thumbnail">`;
+        str += `<div class="caption">`;
+        str += `<h6 id='friend-request'>${matchingFriend.email} wants to be your friend!</h6>`;
+        str += `<p><a href="#" class="btn btn-success" role="button">Accept</a> <a href="#" class="btn btn-danger" role="button">Reject</a></p>`;
+        str += `</div>`;
+        str += `</div>`;
+        appendToDom(str, '#friends');
+      }).catch(console.error.bind(console));
+    }
+  });
+}
+
 module.exports = {
   printFriends,
+  showFriends,
 };

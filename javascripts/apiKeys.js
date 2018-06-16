@@ -24,6 +24,7 @@ const retrieveKeys = () => {
       })
       .catch((err) => {
         console.error('no keys:', err);
+        reject(err);
       });
   });
 };

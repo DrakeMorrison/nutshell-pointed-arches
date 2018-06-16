@@ -115,99 +115,68 @@
     </div>
   </div>
 
-  <div id='nutshell' class="hide">
-
+  <div id='nutshell' class="hide text-center">
     <div class='row'>
-
       <div class='col-xs-5ths'>
         <h2>Friends</h2>
 
         <div class="btn-group">
-          <button id='add-friend-btn' type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Add A Friend
-            <span class="caret"></span>
+          <button id='add-friend-btn' type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Add A Friend <span class="caret"></span>
           </button>
           <ul id='friend-options' class="dropdown-menu">
-            <li>
-              <a>Uh Oh! You are the only user!</a>
-            </li>
+            <li><a>Uh Oh! You are the only user!</a></li>
           </ul>
-        </div>
-        <!-- end of dropdown-->
+        </div> <!-- end of dropdown-->
 
         <div id='friends'></div>
         <div id='friend-form' class='hide'></div>
       </div>
 
-      <div id='nutshell' class="hide">
-        <div class='row'>
-          <div class='col-xs-5ths'>
-            <h2>Friends</h2>
+      <div class='col-xs-5ths'>Messages</div>
 
-            <div class="btn-group">
-              <button id='add-friend-btn' type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Add A Friend <span class="caret"></span>
-              </button>
-              <ul id='friend-options' class="dropdown-menu">
-                <li><a>Uh Oh! You are the only user!</a></li>
-              </ul>
-            </div> <!-- end of dropdown-->
+      <div class='col-xs-5ths'>Events</div>
 
-            <div id='friends'></div>
-            <div id='friend-form' class='hide'></div>
+      <div class='col-xs-5ths'>
+        <h2>News Articles</h2>
+        <button type="button" class="btn btn-success" id="newArticle-btn">New Article</button>
+        <div class="article-form hide">
+          <div class="form-group">
+            <!-- <label for="exampleInputEmail1">News title</label> -->
+            <input type="text" class="form-control article-title" id="exampleInputEmail1" placeholder="News title...">
           </div>
-
-          <div class='col-xs-5ths'>Messages</div>
-
-          <div class='col-xs-5ths'>Events</div>
-
-          <div class='col-xs-5ths'>
-            <h2>News Articles</h2>
-            <button type="button" class="btn btn-success" id="newArticle-btn">New Article</button>
-            <div class="article-form hide">
-              <div class="form-group">
-                <!-- <label for="exampleInputEmail1">News title</label> -->
-                <input type="text" class="form-control article-title" id="exampleInputEmail1" placeholder="News title...">
-              </div>
-              <div class="form-group">
-                <!-- <label for="exampleInputPassword1">Synopsis</label> -->
-                <input type="text" class="form-control article-synopsis" placeholder="Synopsis...">
-              </div>
-              <div class="form-group">
-                <!-- <label for="exampleInputPassword1">URL</label> -->
-                <input type="text" class="form-control article-url" placeholder="URL...">
-              </div>
-              <button type="button" class="btn btn-default saveArticle-btn">Save</button>
-            </div>
-            <div id="savedArticlesDiv"></div>
+          <div class="form-group">
+            <!-- <label for="exampleInputPassword1">Synopsis</label> -->
+            <input type="text" class="form-control article-synopsis" placeholder="Synopsis...">
           </div>
+          <div class="form-group">
+            <!-- <label for="exampleInputPassword1">URL</label> -->
+            <input type="text" class="form-control article-url" placeholder="URL...">
+          </div>
+          <button type="button" class="btn btn-default saveArticle-btn">Save</button>
+        </div>
+        <div id="savedArticlesDiv"></div>
+      </div>
 
       <div class='col-xs-5ths'>
 
-          <div class='col-xs-5ths'>Tasks</div>
+        <h2>Tasks</h2>
 
-          <div class='col-xs-5ths'>
+        <div class="btn-group">
+          <button id='addNewTaskBut' type="button" class="btn btn-default new">New Task</button>
+          </button>
+        </div>
 
-            <h2>Tasks</h2>
+        <div id='taskForm' class='hide'>
+          <textarea placeholder="Enter Task:" id="writeTask" class="form-control" rows="3"></textarea>
+          <button id="saveTask" type="button" class="btn btn-success"><span class="glyphicon glyphicon-save-file"></span></button>
+        </div>
 
-            <div class="btn-group">
-              <button id='addNewTaskBut' type="button" class="btn btn-default new">New Task</button>
-              </button>
-            </div>
+        <div id="taskContainer"></div>
 
-            <div id='taskForm' class='hide'>
-              <textarea placeholder="Enter Task:" id="writeTask" class="form-control" rows="3"></textarea>
-              <button id="saveTask" type="button" class="btn btn-success"><span class="glyphicon glyphicon-save-file"></span></button>
-            </div>
-
-            <div id="taskContainer"></div>
-
-          </div>
-
+      </div>
 
     </div>
-
   </div>
   <!-- end of nutshell -->
 

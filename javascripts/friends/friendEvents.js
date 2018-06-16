@@ -2,8 +2,8 @@
 // Purpose: Manage the DOM events for the Friends feature
 'use strict';
 
-const {getUsers, sendFriendRequest,} = require('./friendFirebaseAPI.js');
-const {printFriends,} = require('./friendDom.js');
+const {getUsers, sendFriendRequest, getFriends,} = require('./friendFirebaseAPI.js');
+const {printFriends, showFriends,} = require('./friendDom.js');
 const {getUID,} = require('./../firebaseApi.js');
 
 function addFriendEvent () {
@@ -29,7 +29,14 @@ function friendRequestEvent () {
   });
 }
 
+function refreshFriends () {
+  getFriends().then(function (results) {
+    showFriends(results);
+  }).catch(console.error.bind(console));
+}
+
 module.exports = {
   addFriendEvent,
   friendRequestEvent,
+  refreshFriends,
 };
