@@ -3,7 +3,7 @@ const {startArticles,} = require('./articles/article-main.js');
 const {exposeTask,} = require('./tasks/taskMain.js');
 const {getAllArticlesEvent,} = require('./articles/article-events.js');
 const {refreshFriends,} = require('./friends/friendEvents.js');
-const {startEvents,} = require('./events/eventssquared.js');
+const {startEvents,} = require('./events/eventsMain.js');
 
 function initializer () {
   startArticles();
