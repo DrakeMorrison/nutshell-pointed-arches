@@ -1,10 +1,11 @@
-const domString = (tasksArray, whereToPrint) => {
+const domString = (whereToPrint, tasksArray) => {
   let taskString = '';
   tasksArray.forEach((writeTask) => {
     taskString += `<div class="row">`;
     taskString += `<div class="col-sm-12">`;
-    taskString +=   `<div class="thumbnail checkbox tasksBox">`;
+    taskString +=   `<div class="thumbnail checkbox tasksBox" data-firebase-id="${writeTask.id}">`;
     taskString +=    `<p class="task">${writeTask.task}</p>`;
+    taskString +=    `<a class="btn deleteTask">X</a>`;
     taskString +=  `</div>`;
     taskString += `</div>`;
     taskString += `</div>`;

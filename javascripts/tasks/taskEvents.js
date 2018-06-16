@@ -1,4 +1,4 @@
-const {saveNewTasks, getAllTasks,} = require('./taskFirebaseApi');
+const { saveNewTasks, getAllTasks, } = require('./taskFirebaseApi');
 const taskDom = require('./taskDom');
 
 const newTask = () => {
@@ -8,15 +8,16 @@ const newTask = () => {
 };
 
 const saveTaskEvent = () => {
-  $(document).on('click', '', (e) => {
-    const eventCardToAdd = $(e.target).closest('.tasksBox');
+  $(document).on('click', '#saveTask', (e) => {
+    const eventCardToAdd = $(e.target).closest('.taskHolder');
     const eventToAdd = {
-      task: eventCardToAdd.find('.task').text(),
+      task: eventCardToAdd.find('#writeTask').val(),
       isCompleted: true,
     };
     saveNewTasks(eventToAdd)
       .then(() => {
-        eventCardToAdd.remove();
+        getAllTaskEvent();
+        // eventCardToAdd.remove();
       })
       .catch((error) => {
         console.error(error.message);
@@ -34,10 +35,25 @@ const getAllTaskEvent = () => {
     });
 };
 
+const deleteTaskFromFirebase = () => {
+  $(document).on('click', '.deleteTask', (e) => {
+    $(e.target).closest('.taskHolder').data('firebaseId');
+    // const deleteTaskId =
+    // deleteTaskFromDb(deleteTaskId)
+    // .then(() => {
+    //   getAllTaskEvent();
+    // })
+    // .catch((error) => {
+    //   console.error(error.message);
+    // });
+  });
+};
+
 const initializer = () => {
   newTask();
   saveTaskEvent();
   getAllTaskEvent();
+  deleteTaskFromFirebase();
 };
 
 module.exports = {

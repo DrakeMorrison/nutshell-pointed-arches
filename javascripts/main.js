@@ -7,9 +7,6 @@ const {exposeTask,} = require('./tasks/taskMain.js');
 const initializer = () => {
   retrieveKeys().then(() => {
     authEvents();
-    startFriends();
-    startArticles();
-    exposeTask();
   });
 };
 
