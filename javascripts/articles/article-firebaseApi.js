@@ -1,7 +1,7 @@
 const {getUID,} = require('./../firebaseApi.js');
 const {getConfig,} = require('./../firebaseApi.js');
 
-const getAllSavedArticles = () => {
+const getAllUsersArticles = () => {
   return new Promise((resolve, reject) => {
     const allArticlesArray = [];
     $.ajax({
@@ -61,7 +61,7 @@ const getAllArticles = () => {
 };
 
 module.exports = {
-  getAllSavedArticles,
+  getAllUsersArticles,
   deleteArticleFromDatabase,
   getAllArticles,
 };
