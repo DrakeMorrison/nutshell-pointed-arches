@@ -1,5 +1,5 @@
 const { setUID, } = require('./firebaseApi');
-const {getAllArticlesEvent,} = require('./articles/article-events.js');
+const {initializer,} = require('./initializer.js');
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -12,7 +12,7 @@ const checkLoginStatus = () => {
       $('#nutshell').removeClass('hide');
       $('#username').html(user.email);
       $('#username').removeClass('hide');
-      getAllArticlesEvent();
+      initializer();
     } else {
       $('#authorization').removeClass('hide');
       $('#logout-btn').addClass('hide');
