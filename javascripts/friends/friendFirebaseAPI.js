@@ -86,9 +86,26 @@ function findEmailByUID (uid) {
   });
 }
 
+function updateFriendRequest (modifiedFriend, id) {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      method: 'PUT',
+      url: `${getConfig().databaseURL}/friends/${id}.json`,
+      data: JSON.stringify(modifiedFriend),
+    })
+      .done(function (modifiedFriend) {
+        resolve(modifiedFriend);
+      })
+      .fail(function () {
+        reject(modifiedFriend);
+      });
+  });
+}
+
 module.exports = {
   getUsers,
   sendFriendRequest,
   getFriends,
   findEmailByUID,
+  updateFriendRequest,
 };

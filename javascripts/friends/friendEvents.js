@@ -2,7 +2,7 @@
 // Purpose: Manage the DOM events for the Friends feature
 'use strict';
 
-const {getUsers, sendFriendRequest, getFriends,} = require('./friendFirebaseAPI.js');
+const {getUsers, sendFriendRequest, getFriends, updateFriendRequest,} = require('./friendFirebaseAPI.js');
 const {printFriends, showFriends,} = require('./friendDom.js');
 const {getUID,} = require('./../firebaseApi.js');
 
@@ -32,12 +32,29 @@ function friendRequestEvent () {
 function refreshFriends () {
   getFriends().then(function (results) {
     showFriends(results);
+    acceptFriend();
   }).catch(console.error.bind(console));
 }
 
 function acceptFriend () {
   $(document).on('click', '.accept-friend', function (e) {
-    // send new friend object to friends and update old friend object
+    // send new friend object to friends collection
+    const newFriend = {
+      'userUid': `${getUID()}`,
+      'friendUid': `${e.target.dataset.userUid}`,
+      'isAccepted': true,
+      'isPending': false,
+    };
+    sendFriendRequest(newFriend).catch(console.error.bind(console));
+    // update old friend object
+    const oldFriend = {
+      'userUid': `${e.target.dataset.userUid}`,
+      'friendUid': `${getUID()}`,
+      'isAccepted': true,
+      'isPending': false,
+    };
+    updateFriendRequest(oldFriend, e.target.dataset.id).catch(console.error.bind(console));
+    refreshFriends();
   });
 }
 
