@@ -36,3 +36,15 @@
         float: left;
     }
 }
+
+#newArticle-btn {
+    margin-bottom: 15px;
+}
+
+.deleteArticleFromCollectionEvent {
+    color: red;
+}
+/*
+deleteArticleFromCollectionEvent:focus {
+    color: rgb(247, 120, 120);
+} */
