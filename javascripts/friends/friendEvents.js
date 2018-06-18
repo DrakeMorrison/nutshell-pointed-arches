@@ -41,24 +41,26 @@ function acceptFriend () {
     // send new friend object to friends collection
     const newFriend = {
       'userUid': `${getUID()}`,
-      'friendUid': `${e.target.dataset.userUid}`,
+      'friendUid': `${e.target.dataset.useruid}`,
       'isAccepted': true,
       'isPending': false,
     };
     sendFriendRequest(newFriend).catch(console.error.bind(console));
     // update old friend object
     const oldFriend = {
-      'userUid': `${e.target.dataset.userUid}`,
+      'userUid': `${e.target.dataset.useruid}`,
       'friendUid': `${getUID()}`,
       'isAccepted': true,
       'isPending': false,
     };
-    updateFriendRequest(oldFriend, e.target.dataset.id).catch(console.error.bind(console));
-    refreshFriends();
+    updateFriendRequest(oldFriend, e.target.dataset.id).then(function () {
+      refreshFriends();
+    }).catch(console.error.bind(console));
   });
 }
 
-function rejectFriend () {}
+function rejectFriend () { // delete friend request from firebase
+}
 
 module.exports = {
   addFriendEvent,

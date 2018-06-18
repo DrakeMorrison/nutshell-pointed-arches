@@ -64,7 +64,7 @@ function getFriends () {
   });
 }
 
-function findEmailByUID (uid) {
+function findUserByUID (uid) {
   const allUsers = [];
   return new Promise(function (resolve, reject) {
     $.ajax({
@@ -106,6 +106,6 @@ module.exports = {
   getUsers,
   sendFriendRequest,
   getFriends,
-  findEmailByUID,
+  findUserByUID,
   updateFriendRequest,
 };

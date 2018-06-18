@@ -2,7 +2,7 @@
 // Purpose: manage the DOM with functions
 'use strict';
 
-const {findEmailByUID,} = require('./friendFirebaseAPI.js');
+const {findUserByUID,} = require('./friendFirebaseAPI.js');
 
 function printFriends (input, uid) {
   let str = '';
@@ -29,7 +29,7 @@ function showFriends (array) {
   let str = '';
   printToDom(str, '#friends');
   array.forEach(function (friend) {
-    findEmailByUID(friend.userUid).then(function (matchingFriend) {
+    findUserByUID(friend.userUid).then(function (matchingFriend) {
       str += `<div class="thumbnail">`;
       str += `<div class="caption">`;
       if (friend.isPending === true) {
@@ -37,7 +37,7 @@ function showFriends (array) {
         str += `<p><a class="btn btn-success accept-friend" data-userUid="${friend.userUid}" data-id="${friend.id}" role="button">Accept</a> <a class="btn btn-danger reject-friend" data-id="${friend.id}" role="button">Reject</a></p>`;
       } else if (friend.isAccepted === true) {
         str += `<h5>${matchingFriend.email}</h5>`;
-        str += `<p><a class='btn btn-danger'>UnFriend</a></p>`;
+        str += `<p><a class='btn btn-danger unfriend-btn'>UnFriend</a></p>`;
       }
       str += `</div>`;
       str += `</div>`;
