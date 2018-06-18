@@ -1,4 +1,7 @@
-const { saveNewTasks, getAllTasks, deleteTaskFromDb, } = require('./taskFirebaseApi');
+// Author: Amanda Mitchell
+// Purpose:
+
+const { saveNewTasks, getAllTasks, deleteTaskFromDb, updateTaskInDb, } = require('./taskFirebaseApi');
 const taskDom = require('./taskDom');
 
 const newTask = () => {
@@ -12,7 +15,7 @@ const saveTaskEvent = () => {
     const eventCardToAdd = $(e.target).closest('.taskHolder');
     const eventToAdd = {
       task: eventCardToAdd.find('#writeTask').val(),
-      isCompleted: true,
+      isCompleted: false,
     };
     saveNewTasks(eventToAdd)
       .then(() => {
@@ -48,11 +51,29 @@ const deleteTaskFromFirebase = () => {
   });
 };
 
+const updateTaskEvent = () => {
+  $(document).on('click', '', (e) => {
+    const updatedTaskId = $(e.target).closest('.taskHolder').data('firebaseId');
+    const updatedTaskCard = {
+      task: updatedTaskCard.find('.tasksBox').val(),
+      isCompleted: true,
+    };
+    updateTaskInDb(updatedTaskCard, updatedTaskId)
+      .then(() => {
+        getAllTaskEvent();
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  });
+};
+
 const initializer = () => {
   newTask();
   saveTaskEvent();
   getAllTaskEvent();
   deleteTaskFromFirebase();
+  updateTaskEvent();
 };
 
 module.exports = {
