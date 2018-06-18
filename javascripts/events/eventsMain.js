@@ -1,9 +1,10 @@
-const { initializer, } = require('./eventsSquared');
+const eventsSquared = require('./eventssquared');
 
-function startEvents () {
-  initializer();
+const eventsInitializer = () => {
+  eventsSquared.startEvents();
+  eventsSquared.postEventsEvent();
 };
 
 module.exports = {
-  startEvents,
+  eventsInitializer,
 };
