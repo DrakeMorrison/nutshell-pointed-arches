@@ -57,10 +57,9 @@ const startEvents = () => {
   deleteEventFromFirebase();
   getEventsEvent();
   clickEvents();
-  postEventsEvent();
 };
 
 module.exports = {
   startEvents,
-  // postEventsEvent,
+  postEventsEvent,
 };
