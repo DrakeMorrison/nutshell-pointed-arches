@@ -133,7 +133,12 @@
         <div id='friend-form' class='hide'></div>
       </div>
 
-      <div class='col-xs-5ths'>Messages</div>
+      <div class='col-xs-5ths'>
+        <h2>Messages</h2>
+        <input id="messageField" type="text" class="form-control" placeholder="Enter Yo Message" aria-describedby="basic-addon1">
+        <button type="submit" id="createMessage-btn" class="btn btn-default showMe">Create</button>
+        <div id="printHere"></div>
+      </div>
 
       <div class='col-xs-5ths'>Events</div>
 
@@ -150,7 +155,9 @@
           <div class="form-group">
             <input type="text" class="form-control article-url" placeholder="URL...">
           </div>
+
           <button type="button" class="btn btn-success saveArticle-btn">Save</button>
+
         </div>
         <div id="savedArticlesDiv"></div>
       </div>
