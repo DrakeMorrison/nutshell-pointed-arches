@@ -7,7 +7,6 @@ const {refreshFriends,} = require('./friends/friendEvents.js');
 
 function initializer () {
   startArticles();
-  // startArticles();
   startFriends();
   exposeTask();
   getAllArticlesEvent();
