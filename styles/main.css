@@ -11,6 +11,10 @@
     padding-left: 15px;
 }
 
+.strikeThrough {
+  text-decoration: line-through;
+}
+
 .col-xs-5ths {
     width: 20%;
     float: left;
