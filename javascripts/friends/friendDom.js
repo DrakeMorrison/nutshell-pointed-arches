@@ -2,7 +2,7 @@
 // Purpose: manage the DOM with functions
 'use strict';
 
-const {findEmailByUID,} = require('./friendFirebaseAPI.js');
+const {findUserByUID,} = require('./friendFirebaseAPI.js');
 
 function printFriends (input, uid) {
   let str = '';
@@ -27,18 +27,22 @@ function appendToDom (str, id) {
 
 function showFriends (array) {
   let str = '';
+  printToDom(str, '#friends');
   array.forEach(function (friend) {
-    if (friend.isPending === true) {
-      findEmailByUID(friend.userUid).then(function (matchingFriend) {
-        str += `<div class="thumbnail">`;
-        str += `<div class="caption">`;
-        str += `<h6 id='friend-request'>${matchingFriend.email} wants to be your friend!</h6>`;
-        str += `<p><a href="#" class="btn btn-success" role="button">Accept</a> <a href="#" class="btn btn-danger" role="button">Reject</a></p>`;
-        str += `</div>`;
-        str += `</div>`;
-        appendToDom(str, '#friends');
-      }).catch(console.error.bind(console));
-    }
+    findUserByUID(friend.userUid).then(function (matchingFriend) {
+      str += `<div class="thumbnail">`;
+      str += `<div class="caption">`;
+      if (friend.isPending === true) {
+        str += `<h6>${matchingFriend.email} wants to be your friend!</h6>`;
+        str += `<p><a class="btn btn-success accept-friend" data-userUid="${friend.userUid}" data-id="${friend.id}" role="button">Accept</a> <a class="btn btn-danger reject-friend" data-id="${friend.id}" role="button">Reject</a></p>`;
+      } else if (friend.isAccepted === true) {
+        str += `<h4>${matchingFriend.email}</h4>`;
+        str += `<p><a class='btn btn-sm btn-danger unfriend-btn' data-friend-id='${matchingFriend.id}' data-user-id='${friend.id}'>UnFriend</a></p>`;
+      }
+      str += `</div>`;
+      str += `</div>`;
+      appendToDom(str, '#friends');
+    }).catch(console.error.bind(console));
   });
 }
 
