@@ -16,8 +16,6 @@ function addFriendEvent () {
 
 function friendRequestEvent () {
   $(document).on('click', '.friend-request-btn', function (e) {
-    // show alert for UX
-    // make new Friend Object with current user as uid
     const newFriend = {
       'userUid': `${getUID()}`,
       'friendUid': `${e.target.dataset.friendUid}`,
@@ -36,7 +34,6 @@ function refreshFriends () {
 
 function acceptFriend () {
   $(document).on('click', '.accept-friend', function (e) {
-    // send new friend object to friends collection
     const newFriend = {
       'userUid': `${getUID()}`,
       'friendUid': `${e.target.dataset.useruid}`,
@@ -57,7 +54,7 @@ function acceptFriend () {
   });
 }
 
-function rejectFriend () { // delete friend request from firebase
+function rejectFriend () {
   $(document).on('click', '.reject-friend', function (e) {
     deleteFriend(e.target.dataset.id).then(function () {
       refreshFriends();
