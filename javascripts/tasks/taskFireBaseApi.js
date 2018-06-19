@@ -1,3 +1,6 @@
+// Author: Amanda Mitchell
+// Purpose:
+
 const { getConfig, getUID, } = require('./../firebaseApi.js');
 
 const saveNewTasks = (newTasks) => {
@@ -55,8 +58,26 @@ const deleteTaskFromDb = (writeTaskId) => {
   });
 };
 
+const updateTaskInDb = (updatedTask, writeTaskId) => {
+  updatedTask.uid = getUID();
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      method: 'PUT',
+      url: `${getConfig().databaseURL}/tasks/${writeTaskId}.json`,
+      data: JSON.stringify(updatedTask),
+    })
+      .done((modifiedTask) => {
+        resolve(modifiedTask);
+      })
+      .fail((error) => {
+        reject(error);
+      });
+  });
+};
+
 module.exports = {
   saveNewTasks,
   getAllTasks,
   deleteTaskFromDb,
+  updateTaskInDb,
 };

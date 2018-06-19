@@ -2,7 +2,7 @@
 // Purpose: Handle CRUD with the Firebase API
 'use strict';
 
-const {getConfig, getUID,} = require('./../firebaseApi.js');
+const { getConfig, getUID, } = require('./../firebaseApi.js');
 
 function getUsers () {
   const allFriends = [];
@@ -64,7 +64,7 @@ function getFriends () {
   });
 }
 
-function findEmailByUID (uid) {
+function findUserByUID (uid) {
   const allUsers = [];
   return new Promise(function (resolve, reject) {
     $.ajax({
@@ -86,9 +86,42 @@ function findEmailByUID (uid) {
   });
 }
 
+function updateFriendRequest (modifiedFriend, id) {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      method: 'PUT',
+      url: `${getConfig().databaseURL}/friends/${id}.json`,
+      data: JSON.stringify(modifiedFriend),
+    })
+      .done(function (modifiedFriend) {
+        resolve(modifiedFriend);
+      })
+      .fail(function () {
+        reject(modifiedFriend);
+      });
+  });
+}
+
+function deleteFriend (friendId) {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      method: 'DELETE',
+      url: `${getConfig().databaseURL}/friends/${friendId}.json`,
+    })
+      .done(function () {
+        resolve();
+      })
+      .fail(function (error) {
+        reject(error);
+      });
+  });
+}
+
 module.exports = {
   getUsers,
   sendFriendRequest,
   getFriends,
-  findEmailByUID,
+  findUserByUID,
+  updateFriendRequest,
+  deleteFriend,
 };

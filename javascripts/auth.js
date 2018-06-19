@@ -25,5 +25,4 @@ const checkLoginStatus = () => {
 
 module.exports = {
   checkLoginStatus,
-  // uidArticle,
 };

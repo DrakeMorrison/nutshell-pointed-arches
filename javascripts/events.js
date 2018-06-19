@@ -20,15 +20,13 @@ const authEvents = () => {
     const pass = $('#registerPassword').val();
     firebase.auth().createUserWithEmailAndPassword(email, pass)
       .then((result) => {
-        saveUser(result.user); // post user here
+        saveUser(result.user);
       })
       .catch((error) => {
-        // Handle Errors here.
         $('#register-error-msg').text(error.message);
         $('#register-error').removeClass('hide');
         const errorMessage = error.message;
         console.error(errorMessage);
-        // ...
       });
   });
 
@@ -44,10 +42,8 @@ const authEvents = () => {
 
   $('#logout-btn').click(() => {
     firebase.auth().signOut().then(() => {
-      // Sign-out successful.
 
     }).catch((error) => {
-      // An error happened.
       console.error(error);
     });
   });

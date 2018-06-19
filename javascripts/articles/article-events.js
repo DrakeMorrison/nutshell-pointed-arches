@@ -1,11 +1,14 @@
 const articleFirebaseApi = require('./article-firebaseApi');
 const {saveArticle,} = require('./../firebaseApi.js');
 const {domStringArticles,} = require('./article-dom.js');
+const {megaSmash,} = require('./article-friendsArticles.js');
+const {getAllUsers,} = require('./article-friendsArticles.js');
+
 const modalBtn = () => {
   $('#newArticle-btn').click((e) => {
     // e.preventDefault();
-    console.error('btn clicked');
     $('.article-form').removeClass('hide');
+    $('#newArticle-btn').addClass('hide');
   });
 };
 const saveArticleEvent = () => {
@@ -20,6 +23,7 @@ const saveArticleEvent = () => {
       .then(() => {
         $('.article-title, .article-synopsis, .article-url').val('');
         $('.article-form').addClass('hide');
+        $('#newArticle-btn').removeClass('hide');
         getAllArticlesEvent();
       })
       .catch((error) => {
@@ -29,13 +33,15 @@ const saveArticleEvent = () => {
 };
 
 const getAllArticlesEvent = () => {
-  articleFirebaseApi.getAllSavedArticles()
-    .then((articlesArray) => {
-      domStringArticles(articlesArray, 'savedArticlesDiv');
-    })
-    .catch((error) => {
-      console.error('error in get all articles event', error);
-    });
+  megaSmash(articleFirebaseApi.getAllArticles(), getAllUsers()).then((friendsArticles) => {
+    articleFirebaseApi.getAllUsersArticles()
+      .then((articlesArray) => {
+        domStringArticles([...articlesArray, ...friendsArticles,], 'savedArticlesDiv');
+      })
+      .catch((error) => {
+        console.error('error in get all articles event', error);
+      });
+  });
 };
 
 const deleteArticleFromFirebase = () => {

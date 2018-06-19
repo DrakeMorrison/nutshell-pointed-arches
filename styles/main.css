@@ -11,6 +11,10 @@
     padding-left: 15px;
 }
 
+.strikeThrough {
+  text-decoration: line-through;
+}
+
 .col-xs-5ths {
     width: 20%;
     float: left;
@@ -39,4 +43,23 @@
 
 .hide {
  display: none;
+}
+/* Article section */
+#newArticle-btn,
+.saveArticle-btn {
+    margin-bottom: 15px;
+}
+
+.deleteArticleFromCollectionEvent {
+    padding: 3px 7px;
+    cursor: default;
+}
+
+.deleteArticleFromCollectionEvent:hover {
+    background-color: rgba(168, 8, 69, 0.842);
+}
+.list-group-item-heading,
+.list-group-item-text {
+    word-wrap: break-word;
+    padding-right: 5px;
 }

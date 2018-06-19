@@ -132,8 +132,6 @@
       <div id='friend-form' class='hide'></div>
     </div>
 
-    <div class='col-xs-5ths'>Messages</div>
-
     <div class='col-xs-5ths'>
       <h2>Events</h2>
       <form class="form-horizontal events-form-1">
@@ -184,39 +182,45 @@
       <div id="events-card-holder"></div>
     </div>
 
+      <div class='col-xs-5ths'>
+        <h2>Messages</h2>
+        <input id="messageField" type="text" class="form-control" placeholder="Enter Yo Message" aria-describedby="basic-addon1">
+        <p></p>
+        <button type="submit" id="createMessage-btn" class="btn btn-primary showMe">Create</button>
+        <p></p>
+        <div id="printHere"></div>
+      </div>
+
           <div class='col-xs-5ths'>
         <h2>News Articles</h2>
         <button type="button" class="btn btn-success" id="newArticle-btn">New Article</button>
         <div class="article-form hide">
           <div class="form-group">
-            <!-- <label for="exampleInputEmail1">News title</label> -->
             <input type="text" class="form-control article-title" id="exampleInputEmail1" placeholder="News title...">
           </div>
           <div class="form-group">
-            <!-- <label for="exampleInputPassword1">Synopsis</label> -->
             <input type="text" class="form-control article-synopsis" placeholder="Synopsis...">
           </div>
           <div class="form-group">
-            <!-- <label for="exampleInputPassword1">URL</label> -->
             <input type="text" class="form-control article-url" placeholder="URL...">
           </div>
-          <button type="button" class="btn btn-default saveArticle-btn">Save</button>
+
+          <button type="button" class="btn btn-success saveArticle-btn">Save</button>
+
         </div>
         <div id="savedArticlesDiv"></div>
       </div>
 
       <div class='col-xs-5ths'>
-
         <h2>Tasks</h2>
-
-        <div class="btn-group">
-          <button id='addNewTaskBut' type="button" class="btn btn-default new">New Task</button>
+          <button id='addNewTaskBut' type="button" class="btn btn-success new">New Task</button>
           </button>
-        </div>
 
         <div id="taskForm" class="taskHolder hide">
-          <input placeholder="Enter Task:" id="writeTask" class="form-control" rows="3">
-          <button id="saveTask" type="button" class="btn btn-success"><span class="glyphicon glyphicon-save-file"></span></button>
+          <div>
+              <input placeholder="Enter Task:" id="writeTask" class="form-control" rows="3">
+          </div>
+          <button id="saveTask" type="button" class="btn btn-default">Save</button>
         </div>
 
         <div id="taskContainer"></div>
