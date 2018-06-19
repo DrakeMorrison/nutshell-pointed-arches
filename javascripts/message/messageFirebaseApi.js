@@ -1,5 +1,4 @@
 const { getConfig,} = require('./../firebaseApi.js');
-// const {setConfig, setUID, } = require('./../f')
 
 const saveMessage = (newMessage) => {
 
@@ -19,7 +18,6 @@ const saveMessage = (newMessage) => {
 };
 
 const getAllMessages = () => {
-  // const uid = getUID();
 
   return new Promise((resolve, reject) => {
     const allMessagesArray = [];

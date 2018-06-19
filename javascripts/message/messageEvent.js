@@ -1,11 +1,10 @@
-/* eslint camelcase: 0 */
 const { saveMessage, getAllMessages, deleteMessageFromDb, updateMessageFromDb, } = require('./../message/messageFirebaseApi.js');
 const {domString, } = require('./../message/messageDom.js');
 const {getUID, } = require('./../firebaseApi.js');
 
 const pressEnterMessageButtonEvent = () => {
   $(document).keypress((e) => {
-    // const time = e.getTime();
+
     if (e.key === 'Enter' && $('#messageField:focus')) {
       const messagesInField = $('#messageField').val();
       const uid = getUID();
@@ -29,7 +28,7 @@ const pressEnterMessageButtonEvent = () => {
   $(document).on('click', '#createMessage-btn', () => {
     const messagesInField = $('#messageField').val();
     const uid = getUID();
-    //  const time = e.getTime();
+
     const message = {
       userUid: uid,
       message: messagesInField,
@@ -43,7 +42,6 @@ const pressEnterMessageButtonEvent = () => {
       }
       );
     EmptymessagesInField();
-    //  getAllMessagesEvent();
   });
 };
 
@@ -101,10 +99,6 @@ const editMessage = () => {
   saveMessageFromFirebase();
 };
 
-  // showInputFields(messageToEditText);
-
-  // const showInputFields = (message1) => {
-
 const saveMessageFromFirebase = () => {
 
   $(document).on('click', '.save', (e) => {
@@ -126,11 +120,7 @@ const saveMessageFromFirebase = () => {
       });
   });
 };
-// const messageTimeStamp = (e) => {
-//   e.timestamp;
-// };
 
 module.exports = {
   pressEnterMessageButtonEvent,
-
 };
