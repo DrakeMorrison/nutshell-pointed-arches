@@ -57,8 +57,26 @@ const deleteMessageFromDb = (messageId) => {
   });
 };
 
+const updateMessageFromDb = (updatedContent, messageId) => {
+
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      method: 'PUT',
+      url: `${getConfig().databaseURL}/messages/${messageId}.json`,
+      data: JSON.stringify(updatedContent),
+    })
+      .done(() => {
+        resolve();
+      })
+      .fail((error) => {
+        reject(error);
+      });
+  });
+};
+
 module.exports = {
   saveMessage,
   getAllMessages,
   deleteMessageFromDb,
+  updateMessageFromDb,
 };
