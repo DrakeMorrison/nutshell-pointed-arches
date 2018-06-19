@@ -40,6 +40,10 @@
         float: left;
     }
 }
+
+.hide {
+ display: none;
+}
 /* Article section */
 #newArticle-btn,
 .saveArticle-btn {

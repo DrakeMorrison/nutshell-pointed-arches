@@ -1,5 +1,5 @@
 const { setUID, } = require('./firebaseApi');
-const {initializer,} = require('./initializer.js');
+const { initializer, } = require('./initializer');
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
