@@ -133,7 +133,12 @@
         <div id='friend-form' class='hide'></div>
       </div>
 
-      <div class='col-xs-5ths'>Messages</div>
+      <div class='col-xs-5ths'>
+        <h2>Messages</h2>
+        <input id="messageField" type="text" class="form-control" placeholder="Enter Yo Message" aria-describedby="basic-addon1">
+        <button type="submit" id="createMessage-btn" class="btn btn-default showMe">Create</button>
+        <div id="printHere"></div>
+      </div>
 
       <div class='col-xs-5ths'>Events</div>
 
@@ -150,23 +155,23 @@
           <div class="form-group">
             <input type="text" class="form-control article-url" placeholder="URL...">
           </div>
+
           <button type="button" class="btn btn-success saveArticle-btn">Save</button>
+
         </div>
         <div id="savedArticlesDiv"></div>
       </div>
 
       <div class='col-xs-5ths'>
-
         <h2>Tasks</h2>
-
-        <div class="btn-group">
-          <button id='addNewTaskBut' type="button" class="btn btn-default new">New Task</button>
+          <button id='addNewTaskBut' type="button" class="btn btn-success new">New Task</button>
           </button>
-        </div>
 
         <div id="taskForm" class="taskHolder hide">
-          <input placeholder="Enter Task:" id="writeTask" class="form-control" rows="3">
-          <button id="saveTask" type="button" class="btn btn-success"><span class="glyphicon glyphicon-save-file"></span></button>
+          <div>
+              <input placeholder="Enter Task:" id="writeTask" class="form-control" rows="3">
+          </div>
+          <button id="saveTask" type="button" class="btn btn-default">Save</button>
         </div>
 
         <div id="taskContainer"></div>

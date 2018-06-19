@@ -1,4 +1,7 @@
-const { saveNewTasks, getAllTasks, deleteTaskFromDb, } = require('./taskFirebaseApi');
+// Author: Amanda Mitchell
+// Purpose:
+
+const { saveNewTasks, getAllTasks, deleteTaskFromDb, updateTaskInDb, } = require('./taskFirebaseApi');
 const taskDom = require('./taskDom');
 
 const newTask = () => {
@@ -12,7 +15,7 @@ const saveTaskEvent = () => {
     const eventCardToAdd = $(e.target).closest('.taskHolder');
     const eventToAdd = {
       task: eventCardToAdd.find('#writeTask').val(),
-      isCompleted: true,
+      isCompleted: false,
     };
     saveNewTasks(eventToAdd)
       .then(() => {
@@ -48,11 +51,30 @@ const deleteTaskFromFirebase = () => {
   });
 };
 
+const updateTaskEvent = () => {
+  $(document).on('click', '.taskCheckbox', (e) => {
+    const updatedTaskId = $(e.target).closest('.tasksBox').data('firebaseId');
+    const updatedTaskCard = $(e.target).closest('.tasksBox');
+    const updatedTask = {
+      task: updatedTaskCard.find('.task').text(),
+      isCompleted: true,
+    };
+    updateTaskInDb(updatedTask, updatedTaskId)
+      .then(() => {
+        getAllTaskEvent();
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  });
+};
+
 const initializer = () => {
   newTask();
   saveTaskEvent();
   getAllTaskEvent();
   deleteTaskFromFirebase();
+  updateTaskEvent();
 };
 
 module.exports = {
