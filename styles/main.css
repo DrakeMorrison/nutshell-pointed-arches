@@ -50,3 +50,8 @@
 .deleteArticleFromCollectionEvent:hover {
     background-color: rgba(168, 8, 69, 0.842);
 }
+.list-group-item-heading,
+.list-group-item-text {
+    word-wrap: break-word;
+    padding-right: 5px;
+}
