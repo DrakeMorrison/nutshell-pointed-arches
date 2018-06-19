@@ -1,15 +1,13 @@
 const {authEvents,} = require('./events');
 const {retrieveKeys, } = require('./apiKeys');
-const {startFriends,} = require('./friends/friendMain.js');
+const {startArticles,} = require('./articles/article-main.js');
+const { pressEnterMessageButtonEvent, } = require('./message/messageEvent');
 
-const { pressEnterMessageButtonEvent,} = require('./message/messageEvent');
-
-const initializer = () => {
+const startApp = () => {
   retrieveKeys();
   authEvents();
+  startArticles();
   pressEnterMessageButtonEvent();
-  startFriends();
-
 };
 
-initializer();
+startApp();
