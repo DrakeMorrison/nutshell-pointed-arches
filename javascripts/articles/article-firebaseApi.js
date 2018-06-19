@@ -1,7 +1,7 @@
 const {getUID,} = require('./../firebaseApi.js');
 const {getConfig,} = require('./../firebaseApi.js');
 
-const getAllSavedArticles = () => {
+const getAllUsersArticles = () => {
   return new Promise((resolve, reject) => {
     const allArticlesArray = [];
     $.ajax({
@@ -38,7 +38,30 @@ const deleteArticleFromDatabase = (articleId) => {
   });
 };
 
+const getAllArticles = () => {
+  return new Promise((resolve, reject) => {
+    const allArticlesArray = [];
+    $.ajax({
+      method: 'GET',
+      url: `${getConfig().databaseURL}/articles.json`,
+    })
+      .done((allArticlesObject) => {
+        if (allArticlesObject !== null) {
+          Object.keys(allArticlesObject).forEach((fbKey) => {
+            allArticlesObject[fbKey].id = fbKey;
+            allArticlesArray.push(allArticlesObject[fbKey]);
+          });
+        }
+        resolve(allArticlesArray);
+      })
+      .fail((error) => {
+        reject(error);
+      });
+  });
+};
+
 module.exports = {
-  getAllSavedArticles,
+  getAllUsersArticles,
   deleteArticleFromDatabase,
+  getAllArticles,
 };
