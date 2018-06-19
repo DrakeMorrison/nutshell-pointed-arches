@@ -52,13 +52,14 @@ const deleteTaskFromFirebase = () => {
 };
 
 const updateTaskEvent = () => {
-  $(document).on('click', '', (e) => {
-    const updatedTaskId = $(e.target).closest('.taskHolder').data('firebaseId');
-    const updatedTaskCard = {
-      task: updatedTaskCard.find('.tasksBox').val(),
+  $(document).on('click', '.taskCheckbox', (e) => {
+    const updatedTaskId = $(e.target).closest('.tasksBox').data('firebaseId');
+    const updatedTaskCard = $(e.target).closest('.tasksBox');
+    const updatedTask = {
+      task: updatedTaskCard.find('.task').text(),
       isCompleted: true,
     };
-    updateTaskInDb(updatedTaskCard, updatedTaskId)
+    updateTaskInDb(updatedTask, updatedTaskId)
       .then(() => {
         getAllTaskEvent();
       })
