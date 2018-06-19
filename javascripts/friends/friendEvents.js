@@ -69,7 +69,13 @@ function rejectFriend () { // delete friend request from firebase
   });
 }
 
-function unFriend () {}
+function unFriend () {
+  $(document).on('click', '.unfriend-btn', function (e) {
+    Promise.all([deleteFriend(e.target.dataset.friendId), deleteFriend(e.target.dataset.userId),]).then(function () {
+      refreshFriends();
+    }).catch(console.error.bind(console));
+  });
+}
 
 module.exports = {
   addFriendEvent,
