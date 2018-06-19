@@ -8,6 +8,7 @@ const modalBtn = () => {
   $('#newArticle-btn').click((e) => {
     // e.preventDefault();
     $('.article-form').removeClass('hide');
+    $('#newArticle-btn').addClass('hide');
   });
 };
 const saveArticleEvent = () => {
@@ -22,6 +23,7 @@ const saveArticleEvent = () => {
       .then(() => {
         $('.article-title, .article-synopsis, .article-url').val('');
         $('.article-form').addClass('hide');
+        $('#newArticle-btn').removeClass('hide');
         getAllArticlesEvent();
       })
       .catch((error) => {
