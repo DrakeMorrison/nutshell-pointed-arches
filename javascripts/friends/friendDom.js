@@ -36,8 +36,8 @@ function showFriends (array) {
         str += `<h6>${matchingFriend.email} wants to be your friend!</h6>`;
         str += `<p><a class="btn btn-success accept-friend" data-userUid="${friend.userUid}" data-id="${friend.id}" role="button">Accept</a> <a class="btn btn-danger reject-friend" data-id="${friend.id}" role="button">Reject</a></p>`;
       } else if (friend.isAccepted === true) {
-        str += `<h5>${matchingFriend.email}</h5>`;
-        str += `<p><a class='btn btn-danger unfriend-btn'>UnFriend</a></p>`;
+        str += `<h4>${matchingFriend.email}</h4>`;
+        str += `<p><a class='btn btn-sm btn-danger unfriend-btn'>UnFriend</a></p>`;
       }
       str += `</div>`;
       str += `</div>`;

@@ -2,7 +2,7 @@
 // Purpose: Handle CRUD with the Firebase API
 'use strict';
 
-const {getConfig, getUID,} = require('./../firebaseApi.js');
+const { getConfig, getUID, } = require('./../firebaseApi.js');
 
 function getUsers () {
   const allFriends = [];
@@ -102,10 +102,26 @@ function updateFriendRequest (modifiedFriend, id) {
   });
 }
 
+function deleteFriend (friendId) {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      method: 'DELETE',
+      url: `${getConfig().databaseURL}/friends/${friendId}.json`,
+    })
+      .done(function () {
+        resolve();
+      })
+      .fail(function (error) {
+        reject(error);
+      });
+  });
+}
+
 module.exports = {
   getUsers,
   sendFriendRequest,
   getFriends,
   findUserByUID,
   updateFriendRequest,
+  deleteFriend,
 };

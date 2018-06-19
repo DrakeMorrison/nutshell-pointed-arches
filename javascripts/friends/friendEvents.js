@@ -2,7 +2,7 @@
 // Purpose: Manage the DOM events for the Friends feature
 'use strict';
 
-const {getUsers, sendFriendRequest, getFriends, updateFriendRequest,} = require('./friendFirebaseAPI.js');
+const {getUsers, sendFriendRequest, getFriends, updateFriendRequest, deleteFriend,} = require('./friendFirebaseAPI.js');
 const {printFriends, showFriends,} = require('./friendDom.js');
 const {getUID,} = require('./../firebaseApi.js');
 
@@ -33,6 +33,8 @@ function refreshFriends () {
   getFriends().then(function (results) {
     showFriends(results);
     acceptFriend();
+    rejectFriend();
+    unFriend();
   }).catch(console.error.bind(console));
 }
 
@@ -45,27 +47,32 @@ function acceptFriend () {
       'isAccepted': true,
       'isPending': false,
     };
-    sendFriendRequest(newFriend).catch(console.error.bind(console));
-    // update old friend object
+
     const oldFriend = {
       'userUid': `${e.target.dataset.useruid}`,
       'friendUid': `${getUID()}`,
       'isAccepted': true,
       'isPending': false,
     };
-    updateFriendRequest(oldFriend, e.target.dataset.id).then(function () {
+
+    Promise.all([sendFriendRequest(newFriend), updateFriendRequest(oldFriend, e.target.dataset.id),]).then(function () {
+      refreshFriends();
+    }).catch(console.error.bind);
+  });
+}
+
+function rejectFriend () { // delete friend request from firebase
+  $(document).on('click', '.reject-friend', function (e) {
+    deleteFriend(e.target.dataset.id).then(function () {
       refreshFriends();
     }).catch(console.error.bind(console));
   });
 }
 
-function rejectFriend () { // delete friend request from firebase
-}
+function unFriend () {}
 
 module.exports = {
   addFriendEvent,
   friendRequestEvent,
   refreshFriends,
-  acceptFriend,
-  rejectFriend,
 };
