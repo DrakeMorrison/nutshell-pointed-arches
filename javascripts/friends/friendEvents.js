@@ -10,13 +10,12 @@ function addFriendEvent () {
   $('#add-friend-btn').click(function (e) {
     getUsers().then(function (results) {
       printFriends(results, getUID());
-      friendRequestEvent();
     }).catch(console.error.bind(console));
   });
 }
 
 function friendRequestEvent () {
-  $('.friend-request-btn').click(function (e) {
+  $(document).on('click', '.friend-request-btn', function (e) {
     // show alert for UX
     // make new Friend Object with current user as uid
     const newFriend = {
@@ -32,9 +31,6 @@ function friendRequestEvent () {
 function refreshFriends () {
   getFriends().then(function (results) {
     showFriends(results);
-    acceptFriend();
-    rejectFriend();
-    unFriend();
   }).catch(console.error.bind(console));
 }
 
@@ -57,7 +53,7 @@ function acceptFriend () {
 
     Promise.all([sendFriendRequest(newFriend), updateFriendRequest(oldFriend, e.target.dataset.id),]).then(function () {
       refreshFriends();
-    }).catch(console.error.bind);
+    }).catch(console.error.bind(console));
   });
 }
 
@@ -79,6 +75,9 @@ function unFriend () {
 
 module.exports = {
   addFriendEvent,
-  friendRequestEvent,
   refreshFriends,
+  acceptFriend,
+  rejectFriend,
+  unFriend,
+  friendRequestEvent,
 };
