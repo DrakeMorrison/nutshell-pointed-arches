@@ -3,10 +3,10 @@ const domStrang = (eventsArray) => {
   eventsArray.forEach((event) => {
     strang +=  `<div class="col-sm-12">`;
     strang +=   `<div class="thumbnail event-card" data-firebase-event-id="${event.id}">`;
-    strang +=     `<h3>${event.eventName}</h3>`;
-    strang +=     `<h4>${event.eventLocation}</h4>`;
-    strang +=     `<h4>${event.eventDate}</h3>`;
-    strang +=     `<p><a href="#" id="event-edit-button" class="btn btn-warning" role="button">Edit</a> <a href="#" id="event-delete-button" class="btn btn-danger" role="button">Delete</a></p>`;
+    strang +=     `<h3 class="event-card-name">${event.eventName}</h3>`;
+    strang +=     `<h4 class="event-card-location">${event.eventLocation}</h4>`;
+    strang +=     `<h4 class="event-card-date">${event.eventDate}</h3>`;
+    strang +=     `<p><a href="#" class="btn btn-warning event-edit-button" role="button">Edit</a> <a href="#" class="btn btn-danger event-delete-button" role="button">Delete</a></p>`;
     strang +=    `</div>`;
     strang +=    `</div>`;
   });

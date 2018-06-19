@@ -1,22 +1,26 @@
 {
-	"events": {
-		"event1": {
-			"userUid": "5ykBb0xyadPZLgH4EPO4i88HIql2",
-      "event": "Bonfire at the beach",
-      "startDate": 1528763298535,
-      "location": "Ocean Beach"
-		},
-		"event2": {
-			"userUid": "5ykBb0xyadPZLgH4EPO4i88HIql2",
-      "event": "Hiking at Sunset",
-      "startDate": 1528763298535,
-      "location": "Mountains"
-		},
-		"event3": {
-			"userUid": "5ykBb0xyadPZLgH4EPO4i88HIql2",
-      "event": "Drinking at Happy Hour",
-      "startDate": 1528763298535,
-      "location": "Rooftop Bar"
-		}
+  "event0" : {
+    "eventDate" : "1/1/2018",
+    "eventLocation" : "percy priest",
+    "eventName" : "paddleboarding",
+    "userUid" : "5ykBb0xyadPZLgH4EPO4i88HIql2"
+  },
+  "event1" : {
+    "eventName" : "Bonfire at the beach",
+    "eventLocation" : "Ocean Beach",
+    "eventDate" : 1528763298535,
+    "userUid" : "5ykBb0xyadPZLgH4EPO4i88HIql2"
+  },
+  "event2" : {
+    "eventName" : "Hiking at Sunset",
+    "eventLocation" : "Mountains",
+    "eventDate" : 1528763298535,
+    "userUid" : "5ykBb0xyadPZLgH4EPO4i88HIql2"
+  },
+  "event3" : {
+    "eventName" : "Drinking at Happy Hour",
+    "eventLocation" : "Rooftop Bar",
+    "eventDate" : 1528763298535,
+    "userUid" : "5ykBb0xyadPZLgH4EPO4i88HIql2"
   }
 }
